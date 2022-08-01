@@ -1,0 +1,29 @@
+{
+  "name": "dynamic-user-interface-interactions",
+  "version": "1.0.0",
+  "description": "This project will be a reference for me on how to implement three various dynamic user interface interactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcampbell57/dynamic-user-interface-interactions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcampbell57/dynamic-user-interface-interactions/issues"
+  },
+  "homepage": "https://github.com/jcampbell57/dynamic-user-interface-interactions#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
