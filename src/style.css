@@ -1,0 +1,66 @@
+:root {
+    --background-color: rgb(90, 90, 90);
+    --secondary-color: rgb(45, 45, 45);
+    --light-color: whitesmoke;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    background-color: var(--background-color);
+}
+
+
+
+/* Header styling */
+
+header {
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    padding: 1rem;
+
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+header>h1 {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+
+
+/* Footer styling */
+
+footer {
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-top: auto;
+
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+/* centers github icon vertically */
+footer>a {
+    display: flex;
+}
+
+.github {
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.github:hover {
+    transform: rotate(-360deg) scale(1.2);
+}

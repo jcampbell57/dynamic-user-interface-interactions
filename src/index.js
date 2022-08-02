@@ -1,4 +1,5 @@
 import './reset.css';
 import './style.css';
+import initialize from './pageLoader';
 
-console.log('Hello!');
+initialize();
