@@ -3,6 +3,7 @@
     --secondary-color: rgb(45, 45, 45);
     --light-color: whitesmoke;
     --hover: rgba(255, 255, 255, 0.2);
+    --active: rgba(255, 255, 255, 0.3);
 }
 
 body {
@@ -49,7 +50,7 @@ header>h1 {
 }
 
 .menuItem {
-    padding: 0.4rem;
+    padding: 0.4rem 1rem;
     margin: 0.6rem;
     font-size: 1.1rem;
     border-radius: 0.3rem;
@@ -58,6 +59,10 @@ header>h1 {
 .menuItem:hover {
     cursor: pointer;
     background-color: var(--hover);
+}
+
+.menuItem:active {
+    background-color: var(--active);
 }
 
 
