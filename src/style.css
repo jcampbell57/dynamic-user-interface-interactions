@@ -2,9 +2,11 @@
     --background-color: rgb(90, 90, 90);
     --secondary-color: rgb(45, 45, 45);
     --light-color: whitesmoke;
+    --hover: rgba(255, 255, 255, 0.2);
 }
 
 body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -32,11 +34,39 @@ header>h1 {
 
 
 
+/* Menu styling */
+
+.mainMenu {
+    /* border: 1px solid red; */
+    /* box-sizing: border-box; */
+
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.menuItem {
+    padding: 0.4rem;
+    margin: 0.6rem;
+    font-size: 1.1rem;
+    border-radius: 0.3rem;
+}
+
+.menuItem:hover {
+    cursor: pointer;
+    background-color: var(--hover);
+}
+
+
+
 /* Footer styling */
 
 footer {
     /* border: 1px solid red; */
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     padding: 1rem;
     margin-top: auto;
 

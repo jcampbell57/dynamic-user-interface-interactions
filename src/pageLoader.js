@@ -2,6 +2,14 @@ import githubIcon from './assets/GitHub-light-32px.png';
 
 const body = document.querySelector('body');
 
+// helper functions
+const createMenuItem = (itemName, itemContainer) => {
+  const newMenuItem = document.createElement('div');
+  newMenuItem.classList.add('menuItem');
+  newMenuItem.innerText = `${itemName}`;
+  itemContainer.appendChild(newMenuItem);
+};
+
 // page initialization functions
 const createHeader = () => {
   const header = document.createElement('header');
@@ -11,6 +19,17 @@ const createHeader = () => {
 
   header.appendChild(headerTitle);
   body.appendChild(header);
+};
+
+const createMainMenu = () => {
+  const mainMenu = document.createElement('div');
+  mainMenu.classList.add('mainMenu');
+
+  createMenuItem('Dropdown Menu', mainMenu);
+  createMenuItem('Mobile Menu', mainMenu);
+  createMenuItem('Image Scroller', mainMenu);
+
+  body.appendChild(mainMenu);
 };
 
 const createFooter = () => {
@@ -36,6 +55,7 @@ const createFooter = () => {
 
 const initialize = () => {
   createHeader();
+  createMainMenu();
   createFooter();
 };
 
