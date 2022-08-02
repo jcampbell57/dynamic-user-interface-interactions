@@ -32,6 +32,13 @@ const createMainMenu = () => {
   body.appendChild(mainMenu);
 };
 
+const createContentContainer = () => {
+  const contentContainter = document.createElement('div');
+  contentContainter.classList.add('contentContainer');
+
+  body.appendChild(contentContainter);
+};
+
 const createFooter = () => {
   const footer = document.createElement('footer');
 
@@ -56,6 +63,7 @@ const createFooter = () => {
 const initialize = () => {
   createHeader();
   createMainMenu();
+  createContentContainer();
   createFooter();
 };
 
