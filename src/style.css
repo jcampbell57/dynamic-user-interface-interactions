@@ -59,13 +59,15 @@ header>h1 {
 }
 
 .menuItem:hover,
-.dropdownMenu:hover {
+.dropdownMenu:hover,
+.dropdownOption:hover {
     cursor: pointer;
     background-color: var(--hover);
 }
 
 .menuItem:active,
-.dropdownMenu:active {
+.dropdownMenu:active,
+.dropdownOption:active {
     background-color: var(--active);
 }
 
@@ -83,36 +85,74 @@ header>h1 {
 
 .contentContainer {
     /* border: 1px solid red; */
-    /* box-sizing: border-box; */
     background-color: var(--background-color);
 
     height: 100%;
     padding: 1rem;
+    box-sizing: border-box;
 
     overflow: auto;
-    position: relative;
+    /* position: relative; */
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: calc(center - 30%)
 }
 
 .content {
-    position: absolute;
+    /* position: absolute; */
     /* height: auto; */
     /* width: fit-content; */
-    top: 5%;
+    /* top: 5%; */
 }
+
+
+
+/* Dropdown menu styling */
 
 .dropdownMenu {
     color: var(--light-color);
     width: 20vw;
     min-width: fit-content;
     padding: 0.5rem 1rem;
+    box-sizing: border-box;
     border: 2px solid var(--light-color);
     text-align: center;
     font-size: 1.1rem;
+    position: relative;
 }
+
+.dropdownContainer {
+    position: absolute;
+    top: calc(100% + 2px);
+    width: 100%;
+    left: 0;
+    
+    border: 1px solid var(--light-color);
+    box-sizing: border-box;
+}
+
+.dropdownOption {
+    display: block;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    /* border: 1px solid blue; */
+}
+
+
+
+/* Mobile menu styling */
+
+
+
+
+
+/* Image scroller styling */
+
+
+
 
 
 /* Footer styling */

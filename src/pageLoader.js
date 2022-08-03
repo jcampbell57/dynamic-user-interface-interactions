@@ -76,15 +76,43 @@ const createDropdownMenu = (container) => {
   dropdownMenuContainter.classList.add('content');
   dropdownMenuContainter.id = 'dropdownMenu';
 
+  // create dropdown container
+  const dropdownContainer = document.createElement('div');
+  dropdownContainer.classList.add('dropdownContainer', 'hidden');
+
+  // create dropdown options
+  for (let i = 1; i < 10; i++) {
+    const dropdownOption = document.createElement('span');
+    dropdownOption.classList.add('dropdownOption');
+    dropdownOption.innerText = `option ${i}`;
+    dropdownContainer.appendChild(dropdownOption);
+  }
+
+  // create dropdown button
   const dropdownMenu = document.createElement('div');
   dropdownMenu.classList.add('dropdownMenu');
   dropdownMenu.innerText = 'dropdown';
   dropdownMenu.addEventListener('click', () => {
     dropdownMenu.classList.toggle('selected');
+    dropdownContainer.classList.toggle('hidden');
   });
 
+  // Append
+  dropdownMenu.appendChild(dropdownContainer);
   dropdownMenuContainter.appendChild(dropdownMenu);
   container.appendChild(dropdownMenuContainter);
+
+  // close dropdown if the user clicks outside of it
+  window.onclick = (e) => {
+    if (!e.target.matches('.dropdownMenu')) {
+      if (dropdownContainer.classList.contains('hidden') === false) {
+        dropdownContainer.classList.add('hidden');
+      }
+      if (dropdownMenu.classList.contains('selected')) {
+        dropdownMenu.classList.toggle('selected');
+      }
+    }
+  };
 };
 
 const createMobileMenu = (container) => {
