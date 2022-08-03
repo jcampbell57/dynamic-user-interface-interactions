@@ -116,21 +116,44 @@ const createDropdownMenu = (container) => {
 };
 
 const createMobileMenu = (container) => {
+  // create content container
+  const mobileMenuContent = document.createElement('div');
+  mobileMenuContent.classList.add('mobileMenuContent', 'content', 'hidden');
+  mobileMenuContent.id = 'mobileMenu';
+
+  // create menu title
+  const mobileMenuTitle = document.createElement('h3');
+  mobileMenuTitle.innerText = 'Horizontal scrolling nav';
+
+  // create mobile menu container
   const mobileMenuContainter = document.createElement('div');
-  mobileMenuContainter.classList.add('content', 'hidden');
-  mobileMenuContainter.id = 'mobileMenu';
+  mobileMenuContainter.classList.add('mobileMenuContainter');
 
-  // PLACEHOLDER
-  const dropdownMenu = document.createElement('div');
-  dropdownMenu.classList.add('dropdownMenu');
-  dropdownMenu.innerText = 'mobile menu';
-  dropdownMenu.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('selected');
-  });
-  mobileMenuContainter.appendChild(dropdownMenu);
-  // END PLACEHOLDER
+  // create mobile menu options
+  for (let i = 1; i < 10; i++) {
+    const mobileMenuOption = document.createElement('div');
+    mobileMenuOption.classList.add('mobileMenuOption');
+    mobileMenuOption.innerText = `mobile option ${i}`;
+    mobileMenuOption.addEventListener('click', () => {
+      // deselect all menu items
+      const mobileMenuCount = mobileMenuContainter.childElementCount;
+      // eslint-disable-next-line no-shadow
+      for (let i = 0; i < mobileMenuCount; i++) {
+        if (mobileMenuContainter.children[i].classList.contains('selected') === true) {
+          mobileMenuContainter.children[i].classList.toggle('selected');
+        }
+      }
+      // make new selection
+      mobileMenuOption.classList.toggle('selected');
+    });
+    mobileMenuContainter.appendChild(mobileMenuOption);
+  }
 
-  container.appendChild(mobileMenuContainter);
+  // Append
+  mobileMenuContent.appendChild(mobileMenuTitle);
+  mobileMenuContent.appendChild(document.createElement('br'));
+  mobileMenuContent.appendChild(mobileMenuContainter);
+  container.appendChild(mobileMenuContent);
 };
 
 const createImageScroller = (container) => {

@@ -60,14 +60,16 @@ header>h1 {
 
 .menuItem:hover,
 .dropdownMenu:hover,
-.dropdownOption:hover {
+.dropdownOption:hover, 
+.mobileMenuOption:hover {
     cursor: pointer;
     background-color: var(--hover);
 }
 
 .menuItem:active,
 .dropdownMenu:active,
-.dropdownOption:active {
+.dropdownOption:active,
+.mobileMenuOption:active {
     background-color: var(--active);
 }
 
@@ -128,7 +130,7 @@ header>h1 {
     top: calc(100% + 2px);
     width: 100%;
     left: 0;
-    
+
     border: 1px solid var(--light-color);
     box-sizing: border-box;
 }
@@ -145,7 +147,28 @@ header>h1 {
 
 /* Mobile menu styling */
 
+.mobileMenuContent {
+    color: var(--light-color);
+    text-align: center;
+    font-size: 1.1rem;
+    width: 100%;
+}
 
+.mobileMenuContainter {
+    border: 2px solid var(--light-color);
+    box-sizing: border-box;
+    display: flex;
+    cursor: grab;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.mobileMenuOption {
+    display: block;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    min-width: 20vw;
+}
 
 
 
