@@ -160,7 +160,7 @@ header>h1 {
     display: flex;
     cursor: grab;
 
-    -webkit-overflow-scrolling: touch;
+    /* -webkit-overflow-scrolling: touch; */
     overflow-x: hidden;
     white-space: nowrap;
 }
