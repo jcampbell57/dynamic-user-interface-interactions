@@ -127,7 +127,12 @@ const createMobileMenu = (container) => {
 
   // create mobile menu container
   const mobileMenuContainter = document.createElement('div');
-  mobileMenuContainter.classList.add('mobileMenuContainter');
+  mobileMenuContainter.classList.add('mobileMenuContainer');
+  // makes scrollwheel functional with horizontal scrolling
+  mobileMenuContainter.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    mobileMenuContainter.scrollLeft += e.deltaY;
+  });
 
   // create mobile menu options
   for (let i = 1; i < 10; i++) {
