@@ -162,7 +162,7 @@ header>h1 {
 
     /* -webkit-overflow-scrolling: touch; */
     overflow-x: hidden;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .mobileMenuOption {
