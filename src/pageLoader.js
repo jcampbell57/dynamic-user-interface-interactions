@@ -136,7 +136,7 @@ const createMobileMenu = (container) => {
   });
 
   // create mobile menu options
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i <= 20; i++) {
     const mobileMenuOption = document.createElement('td');
     mobileMenuOption.classList.add('mobileMenuOption');
     mobileMenuOption.innerText = `mobile option ${i}`;
@@ -157,7 +157,6 @@ const createMobileMenu = (container) => {
 
   // Append
   mobileMenuContent.appendChild(mobileMenuTitle);
-  mobileMenuContent.appendChild(document.createElement('br'));
   mobileMenuTable.appendChild(mobileMenuContainter);
   mobileMenuContent.appendChild(mobileMenuTable);
   container.appendChild(mobileMenuContent);

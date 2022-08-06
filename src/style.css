@@ -154,8 +154,13 @@ header>h1 {
     width: 100%;
 }
 
+.mobileMenuContent>h3 {
+    font-size: 1.15em;
+    margin-bottom: 1em;
+    font-weight: 500;
+}
+
 .mobileMenuContent>table {
-    max-width: 90vw;
     display: flex;
 }
 
@@ -163,16 +168,10 @@ header>h1 {
     border: 2px solid var(--light-color);
     box-sizing: border-box;
     cursor: grab;
-    /* vertical-align: top; */
     display: flex;
-    gap: 5px;
-    max-width: inherit;
 
     /* enable horizontal scroll */
-    /* -webkit-overflow-scrolling: touch; */
     overflow-x: scroll;
-    /* overflow: hidden; */
-    /* white-space: nowrap; */
 }
 
 /* hide scrollbar, retain function */
@@ -181,11 +180,9 @@ header>h1 {
 }
 
 .mobileMenuOption {
-    display: block;
     padding: 0.5rem 1rem;
     box-sizing: border-box;
-    width: max-content;
-    word-wrap: none;
+    min-width: max-content;
     text-align: center;
 }
 
