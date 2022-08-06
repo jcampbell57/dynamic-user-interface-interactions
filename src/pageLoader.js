@@ -126,7 +126,8 @@ const createMobileMenu = (container) => {
   mobileMenuTitle.innerText = 'Horizontal scrolling nav';
 
   // create mobile menu container
-  const mobileMenuContainter = document.createElement('div');
+  const mobileMenuTable = document.createElement('table');
+  const mobileMenuContainter = document.createElement('tr');
   mobileMenuContainter.classList.add('mobileMenuContainer');
   // makes scrollwheel functional with horizontal scrolling
   mobileMenuContainter.addEventListener('wheel', (e) => {
@@ -136,7 +137,7 @@ const createMobileMenu = (container) => {
 
   // create mobile menu options
   for (let i = 1; i < 10; i++) {
-    const mobileMenuOption = document.createElement('div');
+    const mobileMenuOption = document.createElement('td');
     mobileMenuOption.classList.add('mobileMenuOption');
     mobileMenuOption.innerText = `mobile option ${i}`;
     mobileMenuOption.addEventListener('click', () => {
@@ -157,7 +158,8 @@ const createMobileMenu = (container) => {
   // Append
   mobileMenuContent.appendChild(mobileMenuTitle);
   mobileMenuContent.appendChild(document.createElement('br'));
-  mobileMenuContent.appendChild(mobileMenuContainter);
+  mobileMenuTable.appendChild(mobileMenuContainter);
+  mobileMenuContent.appendChild(mobileMenuTable);
   container.appendChild(mobileMenuContent);
 };
 

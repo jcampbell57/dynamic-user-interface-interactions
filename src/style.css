@@ -154,22 +154,39 @@ header>h1 {
     width: 100%;
 }
 
+.mobileMenuContent>table {
+    max-width: 90vw;
+    display: flex;
+}
+
 .mobileMenuContainer {
     border: 2px solid var(--light-color);
     box-sizing: border-box;
-    display: flex;
     cursor: grab;
+    /* vertical-align: top; */
+    display: flex;
+    gap: 5px;
+    max-width: inherit;
 
+    /* enable horizontal scroll */
     /* -webkit-overflow-scrolling: touch; */
-    overflow-x: hidden;
+    overflow-x: scroll;
+    /* overflow: hidden; */
     /* white-space: nowrap; */
+}
+
+/* hide scrollbar, retain function */
+.mobileMenuContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .mobileMenuOption {
     display: block;
     padding: 0.5rem 1rem;
     box-sizing: border-box;
-    min-width: 15vw;
+    width: max-content;
+    word-wrap: none;
+    text-align: center;
 }
 
 
