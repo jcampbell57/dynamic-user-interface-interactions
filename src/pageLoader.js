@@ -119,7 +119,7 @@ const createHeader = () => {
   const header = document.createElement('header');
 
   const headerTitle = document.createElement('h1');
-  headerTitle.innerText = 'Dynamics';
+  headerTitle.innerText = 'Dynamic UI Interactions';
 
   header.appendChild(headerTitle);
   body.appendChild(header);
