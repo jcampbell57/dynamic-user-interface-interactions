@@ -10,5 +10,8 @@ https://css-tricks.com/how-to-create-a-horizontally-scrolling-site/
 to make horizontal scrolling functional with the scrollwheel, I referenced this article:
 https://alvarotrigo.com/blog/scroll-horizontally-with-mouse-wheel-vanilla-java/
 
-To hide the mobile menu, I referenced this article: 
+To hide the mobile menu, I referenced this resource: 
 https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
+
+to implement the image scroller, I referenced this resource:
+https://www.w3schools.com/howto/howto_js_slideshow.asp

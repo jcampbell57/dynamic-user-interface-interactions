@@ -1,5 +1,9 @@
 /* eslint-disable no-plusplus */
 import githubIcon from './assets/GitHub-light-32px.png';
+import placeholderImg1 from './assets/IMG_1201.jpg';
+import placeholderImg2 from './assets/IMG_1212.jpg';
+import placeholderImg3 from './assets/IMG_8716.jpg';
+import placeholderImg4 from './assets/IMG_8855.jpg';
 
 const body = document.querySelector('body');
 
@@ -47,6 +51,67 @@ const createMenuItem = (itemName, itemContainer, itemId, itemClass) => {
   newMenuItem.addEventListener('click', (e) => processMenuSelection(e));
 
   itemContainer.appendChild(newMenuItem);
+};
+
+const addImageToScroller = (image, i, scroller, caption) => {
+  const imageContainer = document.createElement('div');
+  imageContainer.classList.add('imageContainer', 'fade');
+
+  // display image number
+  const imageNumber = document.createElement('div');
+  imageNumber.classList.add('imageNumber');
+  imageNumber.innerText = `${i}/4`;
+  imageContainer.appendChild(imageNumber);
+
+  // display image
+  const newImage = document.createElement('img');
+  newImage.classList.add('scrollerImage');
+  newImage.src = image;
+  imageContainer.appendChild(newImage);
+
+  // display caption
+  if (caption !== undefined) {
+    const imageCaption = document.createElement('div');
+    imageCaption.classList.add('imageCaption');
+    imageCaption.innerText = `${caption}`;
+    imageContainer.appendChild(imageCaption);
+  }
+
+  scroller.appendChild(imageContainer);
+};
+
+let slideIndex = 0;
+
+const selectImage = (n) => {
+  const scrollerImages = document.getElementsByClassName('imageContainer');
+  const scrollerDots = document.getElementsByClassName('scrollerDot');
+
+  // loop through images
+  if (n > scrollerImages.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = scrollerImages.length; }
+
+  // reset image selection
+  for (let i = 0; i < scrollerImages.length; i++) {
+    scrollerImages[i].style.display = 'none';
+  }
+  for (let i = 0; i < scrollerDots.length; i++) {
+    scrollerDots[i].className = scrollerDots[i].className.replace(' selectedImage', '');
+  }
+
+  // select new image
+  scrollerImages[slideIndex - 1].style.display = 'block';
+  scrollerDots[slideIndex - 1].className += ' selectedImage';
+};
+
+const loopImageScroller = () => {
+  const scrollerImages = document.getElementsByClassName('imageContainer');
+  for (let i = 0; i < scrollerImages.length; i++) {
+    scrollerImages[i].style.display = 'none';
+  }
+  slideIndex++;
+  if (slideIndex > scrollerImages.length) { slideIndex = 1; }
+  scrollerImages[slideIndex - 1].style.display = 'block';
+  setTimeout(loopImageScroller, 5000); // Change image every 5 seconds
 };
 
 // page initialization functions
@@ -167,16 +232,45 @@ const createImageScroller = (container) => {
   imageScrollerContainter.classList.add('content', 'hidden');
   imageScrollerContainter.id = 'imageScroller';
 
-  // PLACEHOLDER
-  const dropdownMenu = document.createElement('div');
-  dropdownMenu.classList.add('dropdownMenu');
-  dropdownMenu.innerText = 'image scroller';
-  dropdownMenu.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('selected');
-  });
-  imageScrollerContainter.appendChild(dropdownMenu);
-  // END PLACEHOLDER
+  const imageScroller = document.createElement('div');
+  imageScroller.classList.add('imageScroller');
 
+  // add images
+  addImageToScroller(placeholderImg1, 1, imageScroller, 'View of Diamond Head & Honolulu, Oahu');
+  addImageToScroller(placeholderImg2, 2, imageScroller, 'Jurassic Park Valley, Kualoa Ranch, Oahu');
+  addImageToScroller(placeholderImg3, 3, imageScroller, 'Rainbow on Oahu');
+  addImageToScroller(placeholderImg4, 4, imageScroller, 'Turtle on the beach near Haleiwa, Oahu');
+
+  // add previous button
+  const previousImageBtn = document.createElement('a');
+  previousImageBtn.classList.add('previousImageBtn');
+  previousImageBtn.addEventListener('click', () => { selectImage(slideIndex += -1); });
+  // display previous arrow
+  previousImageBtn.innerHTML = '&#10094;';
+
+  // add next button
+  const nextImageBtn = document.createElement('a');
+  nextImageBtn.classList.add('nextImageBtn');
+  nextImageBtn.addEventListener('click', () => { selectImage(slideIndex += 1); });
+  // display next arrow
+  nextImageBtn.innerHTML = '&#10095;';
+
+  // add image selection dots
+  const scrollerDotContainer = document.createElement('div');
+  scrollerDotContainer.classList.add('scrollerDotContainer');
+  for (let i = 1; i <= 4; i++) {
+    const newDot = document.createElement('span');
+    newDot.classList.add('scrollerDot');
+    // eslint-disable-next-line no-loop-func
+    newDot.addEventListener('click', () => { selectImage(slideIndex = i); });
+    scrollerDotContainer.appendChild(newDot);
+  }
+
+  // append
+  imageScroller.appendChild(previousImageBtn);
+  imageScroller.appendChild(nextImageBtn);
+  imageScrollerContainter.appendChild(imageScroller);
+  imageScrollerContainter.appendChild(scrollerDotContainer);
   container.appendChild(imageScrollerContainter);
 };
 
@@ -217,6 +311,7 @@ const initialize = () => {
   createMainMenu();
   createContentContainer();
   createFooter();
+  loopImageScroller();
 };
 
 export default initialize;

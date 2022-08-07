@@ -6,6 +6,8 @@
     --active: rgba(255, 255, 255, 0.3);
 }
 
+* {box-sizing: border-box}
+
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     display: flex;
@@ -15,10 +17,11 @@ body {
 
 
 
+
+
 /* Header styling */
 
 header {
-    box-sizing: border-box;
     padding: 1rem;
 
     background-color: var(--secondary-color);
@@ -36,13 +39,14 @@ header>h1 {
 
 
 
+
+
 /* Menu styling */
 
 .mainMenu {
     background-color: var(--secondary-color);
     color: var(--light-color);
     border-bottom: 3px solid var(--light-color);
-    box-sizing: border-box;
 
     display: flex;
     align-items: center;
@@ -79,6 +83,8 @@ header>h1 {
 
 
 
+
+
 /* Content styling */
 
 .hidden {
@@ -86,15 +92,11 @@ header>h1 {
 }
 
 .contentContainer {
-    /* border: 1px solid red; */
     background-color: var(--background-color);
 
     height: 100%;
     padding: 1rem;
-    box-sizing: border-box;
-
     overflow: auto;
-    /* position: relative; */
 
     display: flex;
     flex-direction: column;
@@ -102,12 +104,7 @@ header>h1 {
     justify-content: calc(center - 30%)
 }
 
-.content {
-    /* position: absolute; */
-    /* height: auto; */
-    /* width: fit-content; */
-    /* top: 5%; */
-}
+
 
 
 
@@ -118,7 +115,6 @@ header>h1 {
     width: 20vw;
     min-width: fit-content;
     padding: 0.5rem 1rem;
-    box-sizing: border-box;
     border: 2px solid var(--light-color);
     text-align: center;
     font-size: 1.1rem;
@@ -132,16 +128,15 @@ header>h1 {
     left: 0;
 
     border: 1px solid var(--light-color);
-    box-sizing: border-box;
 }
 
 .dropdownOption {
     display: block;
     text-align: center;
     padding: 0.5rem 1rem;
-    box-sizing: border-box;
-    /* border: 1px solid blue; */
 }
+
+
 
 
 
@@ -166,7 +161,6 @@ header>h1 {
 
 .mobileMenuContainer {
     border: 2px solid var(--light-color);
-    box-sizing: border-box;
     cursor: grab;
     display: flex;
 
@@ -181,14 +175,110 @@ header>h1 {
 
 .mobileMenuOption {
     padding: 0.5rem 1rem;
-    box-sizing: border-box;
     min-width: max-content;
     text-align: center;
 }
 
 
 
+
+
 /* Image scroller styling */
+
+.scrollerImage {
+    width: 100%;
+}
+
+/* slideshow container */
+.imageScroller {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* hide images default */
+.imageContainer {
+    display: none;
+}
+
+/* next & previous buttons */
+.previousImageBtn, .nextImageBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: var(--light-color);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    /* user-select: none; */
+}
+
+/* position next button on the right */
+.nextImageBtn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* add hover effect */
+.previousImageBtn:hover, .nextImageBtn:hover {
+    background-color: var(--hover)
+}
+
+/* caption text */
+.imageCaption {
+    color: var(--light-color);
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* image number */
+.imageNumber {
+    color: var(--light-color);
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* scroller dots */
+.scrollerDotContainer {
+    text-align: center;
+    margin-top: 4px;
+}
+
+.scrollerDot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.scrollerDot:hover, .selectedImage {
+    background-color: #717171;
+}
+
+/* fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
 
 
 
@@ -200,7 +290,6 @@ footer {
     padding: 1rem;
     margin-top: auto;
     border-top: 3px solid var(--light-color);
-    box-sizing: border-box;
 
     background-color: var(--secondary-color);
     color: var(--light-color);
