@@ -4,6 +4,7 @@
     --light-color: whitesmoke;
     --hover: rgba(255, 255, 255, 0.2);
     --active: rgba(255, 255, 255, 0.3);
+    --error : darkred
 }
 
 * {box-sizing: border-box}
@@ -149,7 +150,7 @@ header>h1 {
     width: 100%;
 }
 
-h3 {
+.mobileMenuContent>h3 {
     font-size: 1.15em;
     margin-bottom: 1em;
     font-weight: 500;
@@ -286,9 +287,94 @@ h3 {
 
 
 
-/* Form & validation styling */
+/* Mobile form & validation styling */
 
+.validationFormContainter {
+    color: var(--light-color);    
+}
 
+.formHeader {
+    text-align: center;
+    background-color: var(--hover);
+    border: 1px solid var(--light-color);
+    border-radius: 0.3rem;
+}
+
+.formHeader>h3 {
+    font-size: 1.15em;
+    padding: 0.5em;
+    font-weight: 500;
+}
+
+.validationForm {
+    font-size: 1.1em;
+    padding: 0.5em;
+    background-color: var(--hover);
+    border: 1px solid var(--light-color);
+    border-radius: 0.3rem;
+
+    /* width: 80%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formRow {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap; 
+}
+
+.formRow input {
+    background-color: var(--light-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 3px;
+    width: 100%;
+    padding: 7px;
+    font-size: 1.1rem;
+}
+
+.formRow select {
+    width: 100%;
+    padding: 5px;
+    font-size: 1.1rem;          /* This won't work in Chrome or Safari */
+    /* -webkit-appearance: none;   This will make it work */
+}
+
+.formRow label {
+    margin-bottom: 0.5rem;
+}
+
+.formRow input:invalid {
+  border: 1px solid var(--error);
+  color: var(--error);
+  box-shadow: none; /* Remove default red glow in Firefox */
+}
+
+.formRow button {
+    font-size: 1.15rem;
+    font-weight: bold;
+
+    color: #FFFFFF;
+    background-color: var(--hover);
+
+    border: none;
+    border-radius: 3px;
+
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.formRow button:hover {
+    background-color: var(--active);
+}
+
+.formRow button:active {
+    background-color: var(--active);
+    cursor: grabbing;
+}
 
 
 
@@ -325,3 +411,32 @@ footer>a {
 .github:hover {
     transform: rotate(-360deg) scale(1.2);
 }
+
+
+
+
+
+/* Desktop form styling  */
+
+@media only screen and (min-width: 700px) {
+    .formHeader,
+    .validationForm {
+      width: 600px;
+    }
+    .formRow {
+      flex-direction: row;
+      align-items: flex-start; /* To avoid stretching */
+      margin-bottom: 20px;
+    }
+    .formRow input,
+    .formRow select {
+      width: 280px;
+      height: initial;
+    }
+    .formRow label {
+      text-align: right;
+      width: 180px;
+      margin-top: 7px;
+      padding-right: 20px;
+    }
+  }

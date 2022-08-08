@@ -632,6 +632,19 @@ const createConfirmPasswordInput = (container) => {
   container.appendChild(formRow);
 };
 
+const createSubmitButton = (container) => {
+  // submit button container
+  const formRow = document.createElement('div');
+  formRow.classList.add('formRow');
+  // submit button
+  const submitBtn = document.createElement('button');
+  submitBtn.classList.add('submitBtn');
+  submitBtn.innerText = 'Submit';
+  // append submit button
+  formRow.appendChild(submitBtn);
+  container.appendChild(formRow);
+};
+
 const createValidationForm = (container) => {
   // create form validation container
   const validationFormContainter = document.createElement('div');
@@ -655,10 +668,12 @@ const createValidationForm = (container) => {
   createZipCodeInput(validationForm);
   createPasswordInput(validationForm);
   createConfirmPasswordInput(validationForm);
+  createSubmitButton(validationForm);
 
   // append
   formHeader.appendChild(formTitle);
   validationFormContainter.appendChild(formHeader);
+  validationFormContainter.appendChild(document.createElement('br'));
   validationFormContainter.appendChild(validationForm);
   container.appendChild(validationFormContainter);
 };
