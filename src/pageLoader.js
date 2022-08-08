@@ -578,6 +578,60 @@ const createCountryInput = (container) => {
   container.appendChild(formRow);
 };
 
+const createZipCodeInput = (container) => {
+  // zip code container
+  const formRow = document.createElement('div');
+  formRow.classList.add('formRow');
+  // zip code label
+  const zipCodeLabel = document.createElement('label');
+  zipCodeLabel.for = 'zipcode';
+  zipCodeLabel.innerText = 'Zip code';
+  // zip code input
+  const zipCodeInput = document.createElement('input');
+  zipCodeInput.id = 'zipcode';
+  zipCodeInput.name = 'zipcode';
+  // append zip code input
+  formRow.appendChild(zipCodeLabel);
+  formRow.appendChild(zipCodeInput);
+  container.appendChild(formRow);
+};
+
+const createPasswordInput = (container) => {
+  // password container
+  const formRow = document.createElement('div');
+  formRow.classList.add('formRow');
+  // password label
+  const passwordLabel = document.createElement('label');
+  passwordLabel.for = 'password';
+  passwordLabel.innerText = 'Password';
+  // password input
+  const passwordInput = document.createElement('input');
+  passwordInput.id = 'password';
+  passwordInput.name = 'password';
+  // append password input
+  formRow.appendChild(passwordLabel);
+  formRow.appendChild(passwordInput);
+  container.appendChild(formRow);
+};
+
+const createConfirmPasswordInput = (container) => {
+  // confirm password container
+  const formRow = document.createElement('div');
+  formRow.classList.add('formRow');
+  // confirm password label
+  const confirmPasswordLabel = document.createElement('label');
+  confirmPasswordLabel.for = 'passwordConfirmation';
+  confirmPasswordLabel.innerText = 'Confirm password';
+  // connfirm password input
+  const confirmPasswordInput = document.createElement('input');
+  confirmPasswordInput.id = 'passwordConfirmation';
+  confirmPasswordInput.name = 'passwordConfirmation';
+  // append confirm password input
+  formRow.appendChild(confirmPasswordLabel);
+  formRow.appendChild(confirmPasswordInput);
+  container.appendChild(formRow);
+};
+
 const createValidationForm = (container) => {
   // create form validation container
   const validationFormContainter = document.createElement('div');
@@ -595,8 +649,12 @@ const createValidationForm = (container) => {
   // create form
   const validationForm = document.createElement('form');
   validationForm.classList.add('validationForm');
+
   createEmailInput(validationForm);
   createCountryInput(validationForm);
+  createZipCodeInput(validationForm);
+  createPasswordInput(validationForm);
+  createConfirmPasswordInput(validationForm);
 
   // append
   formHeader.appendChild(formTitle);
