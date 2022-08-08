@@ -49,6 +49,7 @@ header>h1 {
     border-bottom: 3px solid var(--light-color);
 
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: space-evenly;
 
@@ -145,11 +146,10 @@ header>h1 {
 .mobileMenuContent {
     color: var(--light-color);
     text-align: center;
-    font-size: 1.1rem;
     width: 100%;
 }
 
-.mobileMenuContent>h3 {
+h3 {
     font-size: 1.15em;
     margin-bottom: 1em;
     font-weight: 500;
@@ -175,6 +175,8 @@ header>h1 {
 
 .mobileMenuOption {
     padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+
     min-width: max-content;
     text-align: center;
 }
@@ -279,6 +281,14 @@ header>h1 {
     from {opacity: .4}
     to {opacity: 1}
 }
+
+
+
+
+
+/* Form & validation styling */
+
+
 
 
 
