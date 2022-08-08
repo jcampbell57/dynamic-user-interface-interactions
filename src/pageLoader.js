@@ -105,12 +105,21 @@ const selectImage = (n) => {
 
 const loopImageScroller = () => {
   const scrollerImages = document.getElementsByClassName('imageContainer');
+  const scrollerDots = document.getElementsByClassName('scrollerDot');
+
+  // reset image selection
   for (let i = 0; i < scrollerImages.length; i++) {
     scrollerImages[i].style.display = 'none';
   }
+  for (let i = 0; i < scrollerDots.length; i++) {
+    scrollerDots[i].className = scrollerDots[i].className.replace(' selectedImage', '');
+  }
+
+  // select new image
   slideIndex++;
   if (slideIndex > scrollerImages.length) { slideIndex = 1; }
   scrollerImages[slideIndex - 1].style.display = 'block';
+  scrollerDots[slideIndex - 1].className += ' selectedImage';
   setTimeout(loopImageScroller, 5000); // Change image every 5 seconds
 };
 
