@@ -555,6 +555,15 @@ const createEmailInput = (container) => {
   emailInput.name = 'email';
   emailInput.type = 'email';
   emailInput.placeholder = 'jane@example.com';
+  // validity check
+  emailInput.addEventListener('input', () => {
+    if (emailInput.validity.typeMismatch) {
+      emailInput.setCustomValidity('Enter a valid email');
+      emailInput.reportValidity();
+    } else {
+      emailInput.setCustomValidity('');
+    }
+  });
   // append email
   formRow.appendChild(emailLabel);
   formRow.appendChild(emailInput);
@@ -574,12 +583,25 @@ const createCountryInput = (container) => {
   countrySelection.id = 'country';
   countrySelection.name = 'country';
   // country options
+  const blankOption = document.createElement('option');
+  blankOption.value = '';
+  blankOption.innerText = '';
+  countrySelection.appendChild(blankOption);
   Object.keys(countryListAlpha2).forEach((key) => {
     // console.log(key, countryListAlpha2[key]);
     const newOption = document.createElement('option');
     newOption.value = key;
     newOption.innerText = countryListAlpha2[key];
     countrySelection.appendChild(newOption);
+  });
+  // validity check
+  countrySelection.addEventListener('select', () => {
+    if (countrySelection.value === '') {
+      countrySelection.setCustomValidity('Which country are you in?');
+      countrySelection.reportValidity();
+    } else {
+      countrySelection.setCustomValidity('');
+    }
   });
   // append country input
   formRow.appendChild(countryLabel);
@@ -599,6 +621,8 @@ const createZipCodeInput = (container) => {
   const zipCodeInput = document.createElement('input');
   zipCodeInput.id = 'zipcode';
   zipCodeInput.name = 'zipcode';
+  // validity check
+  zipCodeInput.addEventListener('input', () => {});
   // append zip code input
   formRow.appendChild(zipCodeLabel);
   formRow.appendChild(zipCodeInput);
@@ -617,6 +641,8 @@ const createPasswordInput = (container) => {
   const passwordInput = document.createElement('input');
   passwordInput.id = 'password';
   passwordInput.name = 'password';
+  // validity check
+  passwordInput.addEventListener('input', () => {});
   // append password input
   formRow.appendChild(passwordLabel);
   formRow.appendChild(passwordInput);
@@ -635,6 +661,8 @@ const createConfirmPasswordInput = (container) => {
   const confirmPasswordInput = document.createElement('input');
   confirmPasswordInput.id = 'passwordConfirmation';
   confirmPasswordInput.name = 'passwordConfirmation';
+  // validity check
+  confirmPasswordInput.addEventListener('input', () => {});
   // append confirm password input
   formRow.appendChild(confirmPasswordLabel);
   formRow.appendChild(confirmPasswordInput);
@@ -671,6 +699,7 @@ const createValidationForm = (container) => {
   // create form
   const validationForm = document.createElement('form');
   validationForm.classList.add('validationForm');
+  validationForm.autocomplete = 'off';
 
   createEmailInput(validationForm);
   createCountryInput(validationForm);
