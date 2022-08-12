@@ -15,3 +15,5 @@ https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
 
 to implement the image scroller, I referenced this resource:
 https://www.w3schools.com/howto/howto_js_slideshow.asp
+
+The form was added to practice validation with javascript.
