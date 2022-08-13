@@ -636,6 +636,30 @@ const createZipCodeInput = (container) => {
   container.appendChild(formRow);
 };
 
+const validatePassword = () => {
+  const passwordInput = document.getElementById('password');
+
+  // Validate lowercase letters
+  if (/[a-z]/g.test(passwordInput.value) === false) {
+    passwordInput.setCustomValidity('Must contain lowercase letter');
+    passwordInput.reportValidity();
+  // Validate capital letters
+  } else if (/[A-Z]/g.test(passwordInput.value) === false) {
+    passwordInput.setCustomValidity('Must contain uppercase letter');
+    passwordInput.reportValidity();
+  // Validate numbers
+  } else if (/[0-9]/g.test(passwordInput.value) === false) {
+    passwordInput.setCustomValidity('Must contain a number');
+    passwordInput.reportValidity();
+  // Validate length
+  } else if (passwordInput.value.length < 8) {
+    passwordInput.setCustomValidity('Must be at least 8 characters');
+    passwordInput.reportValidity();
+  } else {
+    passwordInput.setCustomValidity('');
+  }
+};
+
 const createPasswordInput = (container) => {
   // password container
   const formRow = document.createElement('div');
@@ -650,11 +674,7 @@ const createPasswordInput = (container) => {
   passwordInput.name = 'password';
   passwordInput.type = 'password';
   // validity check
-  passwordInput.addEventListener('input', () => {
-    // if () {} else {
-    //   passwordInput.setCustomValidity('');
-    // }
-  });
+  passwordInput.addEventListener('input', () => validatePassword());
   // append password input
   formRow.appendChild(passwordLabel);
   formRow.appendChild(passwordInput);
