@@ -622,7 +622,14 @@ const createZipCodeInput = (container) => {
   zipCodeInput.id = 'zipcode';
   zipCodeInput.name = 'zipcode';
   // validity check
-  zipCodeInput.addEventListener('input', () => {});
+  zipCodeInput.addEventListener('input', () => {
+    if (/^\d{5}(-\d{4})?$/.test(zipCodeInput.value) === false) {
+      zipCodeInput.setCustomValidity('Enter a valid zipcode');
+      zipCodeInput.reportValidity();
+    } else {
+      zipCodeInput.setCustomValidity('');
+    }
+  });
   // append zip code input
   formRow.appendChild(zipCodeLabel);
   formRow.appendChild(zipCodeInput);
@@ -641,8 +648,13 @@ const createPasswordInput = (container) => {
   const passwordInput = document.createElement('input');
   passwordInput.id = 'password';
   passwordInput.name = 'password';
+  passwordInput.type = 'password';
   // validity check
-  passwordInput.addEventListener('input', () => {});
+  passwordInput.addEventListener('input', () => {
+    // if () {} else {
+    //   passwordInput.setCustomValidity('');
+    // }
+  });
   // append password input
   formRow.appendChild(passwordLabel);
   formRow.appendChild(passwordInput);
@@ -659,10 +671,19 @@ const createConfirmPasswordInput = (container) => {
   confirmPasswordLabel.innerText = 'Confirm password';
   // connfirm password input
   const confirmPasswordInput = document.createElement('input');
+  confirmPasswordInput.type = 'password';
   confirmPasswordInput.id = 'passwordConfirmation';
   confirmPasswordInput.name = 'passwordConfirmation';
   // validity check
-  confirmPasswordInput.addEventListener('input', () => {});
+  confirmPasswordInput.addEventListener('input', () => {
+    const passwordInput = document.getElementById('password').value;
+    if (confirmPasswordInput.value !== passwordInput) {
+      confirmPasswordInput.setCustomValidity('Does not match');
+      confirmPasswordInput.reportValidity();
+    } else {
+      confirmPasswordInput.setCustomValidity('');
+    }
+  });
   // append confirm password input
   formRow.appendChild(confirmPasswordLabel);
   formRow.appendChild(confirmPasswordInput);
