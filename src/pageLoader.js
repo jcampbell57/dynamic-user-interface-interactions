@@ -541,6 +541,16 @@ const countryListAlpha2 = {
   AX: 'Åland Islands',
 };
 
+const validateEmail = () => {
+  const emailInput = document.getElementById('email');
+  if (emailInput.validity.typeMismatch || emailInput.value === '') {
+    emailInput.setCustomValidity('Enter a valid email');
+    emailInput.reportValidity();
+  } else {
+    emailInput.setCustomValidity('');
+  }
+};
+
 const createEmailInput = (container) => {
   // email container
   const formRow = document.createElement('div');
@@ -556,18 +566,21 @@ const createEmailInput = (container) => {
   emailInput.type = 'email';
   emailInput.placeholder = 'jane@example.com';
   // validity check
-  emailInput.addEventListener('input', () => {
-    if (emailInput.validity.typeMismatch) {
-      emailInput.setCustomValidity('Enter a valid email');
-      emailInput.reportValidity();
-    } else {
-      emailInput.setCustomValidity('');
-    }
-  });
+  emailInput.addEventListener('input', () => validateEmail());
   // append email
   formRow.appendChild(emailLabel);
   formRow.appendChild(emailInput);
   container.appendChild(formRow);
+};
+
+const validateCountryInput = () => {
+  const countrySelection = document.getElementById('country');
+  if (countrySelection.value === '') {
+    countrySelection.setCustomValidity('Which country are you in?');
+    countrySelection.reportValidity();
+  } else {
+    countrySelection.setCustomValidity('');
+  }
 };
 
 const createCountryInput = (container) => {
@@ -595,18 +608,21 @@ const createCountryInput = (container) => {
     countrySelection.appendChild(newOption);
   });
   // validity check
-  countrySelection.addEventListener('select', () => {
-    if (countrySelection.value === '') {
-      countrySelection.setCustomValidity('Which country are you in?');
-      countrySelection.reportValidity();
-    } else {
-      countrySelection.setCustomValidity('');
-    }
-  });
+  countrySelection.addEventListener('input', () => validateCountryInput());
   // append country input
   formRow.appendChild(countryLabel);
   formRow.appendChild(countrySelection);
   container.appendChild(formRow);
+};
+
+const validateZipCode = () => {
+  const zipCodeInput = document.getElementById('zipcode');
+  if (/^\d{5}(-\d{4})?$/.test(zipCodeInput.value) === false) {
+    zipCodeInput.setCustomValidity('Enter a valid zipcode');
+    zipCodeInput.reportValidity();
+  } else {
+    zipCodeInput.setCustomValidity('');
+  }
 };
 
 const createZipCodeInput = (container) => {
@@ -622,14 +638,7 @@ const createZipCodeInput = (container) => {
   zipCodeInput.id = 'zipcode';
   zipCodeInput.name = 'zipcode';
   // validity check
-  zipCodeInput.addEventListener('input', () => {
-    if (/^\d{5}(-\d{4})?$/.test(zipCodeInput.value) === false) {
-      zipCodeInput.setCustomValidity('Enter a valid zipcode');
-      zipCodeInput.reportValidity();
-    } else {
-      zipCodeInput.setCustomValidity('');
-    }
-  });
+  zipCodeInput.addEventListener('input', () => validateZipCode());
   // append zip code input
   formRow.appendChild(zipCodeLabel);
   formRow.appendChild(zipCodeInput);
@@ -681,6 +690,17 @@ const createPasswordInput = (container) => {
   container.appendChild(formRow);
 };
 
+const confirmPassword = () => {
+  const confirmPasswordInput = document.getElementById('passwordConfirmation');
+  const passwordInput = document.getElementById('password').value;
+  if (confirmPasswordInput.value !== passwordInput) {
+    confirmPasswordInput.setCustomValidity('Does not match');
+    confirmPasswordInput.reportValidity();
+  } else {
+    confirmPasswordInput.setCustomValidity('');
+  }
+};
+
 const createConfirmPasswordInput = (container) => {
   // confirm password container
   const formRow = document.createElement('div');
@@ -695,19 +715,22 @@ const createConfirmPasswordInput = (container) => {
   confirmPasswordInput.id = 'passwordConfirmation';
   confirmPasswordInput.name = 'passwordConfirmation';
   // validity check
-  confirmPasswordInput.addEventListener('input', () => {
-    const passwordInput = document.getElementById('password').value;
-    if (confirmPasswordInput.value !== passwordInput) {
-      confirmPasswordInput.setCustomValidity('Does not match');
-      confirmPasswordInput.reportValidity();
-    } else {
-      confirmPasswordInput.setCustomValidity('');
-    }
-  });
+  confirmPasswordInput.addEventListener('input', () => confirmPassword());
   // append confirm password input
   formRow.appendChild(confirmPasswordLabel);
   formRow.appendChild(confirmPasswordInput);
   container.appendChild(formRow);
+};
+
+const submitForm = (e) => {
+  // prevent actual form submission
+  e.preventDefault();
+  // validate form fields
+  confirmPassword();
+  validatePassword();
+  validateZipCode();
+  validateCountryInput();
+  validateEmail();
 };
 
 const createSubmitButton = (container) => {
@@ -718,6 +741,8 @@ const createSubmitButton = (container) => {
   const submitBtn = document.createElement('button');
   submitBtn.classList.add('submitBtn');
   submitBtn.innerText = 'Submit';
+  // event listener
+  submitBtn.addEventListener('click', (e) => submitForm(e));
   // append submit button
   formRow.appendChild(submitBtn);
   container.appendChild(formRow);
