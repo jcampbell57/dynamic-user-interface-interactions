@@ -29,6 +29,8 @@ const processMenuSelection = (e) => {
       contentContainer.children[i].classList.add('hidden');
     }
     // display selected content
+    console.log(contentContainer.children[i].id);
+    console.log(e.target.id);
     if (contentContainer.children[i].id === e.target.id) {
       contentContainer.children[i].classList.remove('hidden');
     }
@@ -142,6 +144,7 @@ const createMainMenu = () => {
   createMenuItem('Mobile Menu', mainMenu, 'mobileMenu');
   createMenuItem('Image Scroller', mainMenu, 'imageScroller');
   createMenuItem('Form Validation', mainMenu, 'validationForm');
+  createMenuItem('API Practice', mainMenu, 'APIPractice');
 
   body.appendChild(mainMenu);
 };
@@ -782,6 +785,24 @@ const createValidationForm = (container) => {
   container.appendChild(validationFormContainter);
 };
 
+const createAPIPractice = (container) => {
+  const APIPracticeContainter = document.createElement('div');
+  APIPracticeContainter.classList.add('content', 'hidden');
+  APIPracticeContainter.id = 'APIPractice';
+
+  // create API button
+  const APIPractice = document.createElement('div');
+  APIPractice.classList.add('APIPractice');
+  APIPractice.innerText = 'dropdown';
+  APIPractice.addEventListener('click', () => {
+    APIPractice.classList.toggle('selected');
+  });
+
+  // Append
+  APIPracticeContainter.appendChild(APIPractice);
+  container.appendChild(APIPracticeContainter);
+};
+
 const createContentContainer = () => {
   const contentContainter = document.createElement('div');
   contentContainter.classList.add('contentContainer');
@@ -790,6 +811,7 @@ const createContentContainer = () => {
   createMobileMenu(contentContainter);
   createImageScroller(contentContainter);
   createValidationForm(contentContainter);
+  createAPIPractice(contentContainter);
 
   body.appendChild(contentContainter);
   loopImageScroller();

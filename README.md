@@ -19,3 +19,5 @@ https://www.w3schools.com/howto/howto_js_slideshow.asp
 The form was added to practice validation with javascript.
 
 I learned how to implement babel during this project. 
+
+I also utilized this project to learn how to use APIs.
