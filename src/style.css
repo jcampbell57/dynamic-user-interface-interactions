@@ -393,12 +393,41 @@ header>h1 {
     /* width: 100%; */
 }
 
+.APIImageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 .APIPracticeContainter>h3 {
     font-size: 1.15em;
     margin-bottom: 1em;
     font-weight: 500;
 }
 
+.APISearchBtn {
+    font-size: 1.15rem;
+    font-weight: bold;
+
+    color: #FFFFFF;
+    background-color: var(--hover);
+
+    border: none;
+    border-radius: 3px;
+
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.APISearchBtn:hover {
+    background-color: var(--active);
+}
+
+.APISearchBtn:active {
+    background-color: var(--active);
+    cursor: grabbing;
+}
 
 
 

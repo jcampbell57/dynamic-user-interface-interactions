@@ -316,14 +316,18 @@ const createValidationForm = (container) => {
 };
 
 const createAPIPractice = (container) => {
-  // creat API image container
+  // creat API practice container
   const APIPracticeContainter = document.createElement('div');
   APIPracticeContainter.classList.add('APIPracticeContainter', 'content', 'hidden');
   APIPracticeContainter.id = 'APIPractice';
 
   // create API title
   const APITitle = document.createElement('h3');
-  APITitle.innerText = 'Dogs playing';
+  APITitle.innerText = 'API image search';
+
+  // creat API image container
+  const APIImageContainer = document.createElement('div');
+  APIImageContainer.classList.add('APIImageContainer');
 
   // create API img
   const APIPractice = document.createElement('img');
@@ -334,11 +338,24 @@ const createAPIPractice = (container) => {
     .then((response) => response.json())
     .then((response) => {
       APIPractice.src = response.data.images.original.url;
-    });
+    })
+    .catch((err) => console.log(err));
+
+  // search input
+  const APISearchInput = document.createElement('input');
+  APISearchInput.placeholder = 'dogs playing';
+
+  // search button
+  const APISearchBtn = document.createElement('div');
+  APISearchBtn.classList.add('APISearchBtn');
+  APISearchBtn.innerText = 'Search';
 
   // Append
   APIPracticeContainter.appendChild(APITitle);
-  APIPracticeContainter.appendChild(APIPractice);
+  APIPracticeContainter.appendChild(APIImageContainer);
+  APIImageContainer.appendChild(APIPractice);
+  APIImageContainer.appendChild(APISearchInput);
+  APIImageContainer.appendChild(APISearchBtn);
   container.appendChild(APIPracticeContainter);
 };
 
