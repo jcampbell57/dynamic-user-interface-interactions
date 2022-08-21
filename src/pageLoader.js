@@ -1,4 +1,5 @@
 /* eslint-disable no-plusplus */
+import { doc } from 'prettier';
 import githubIcon from './assets/GitHub-light-32px.png';
 import placeholderImg1 from './assets/IMG_1201.jpg';
 import placeholderImg2 from './assets/IMG_1212.jpg';
@@ -315,6 +316,36 @@ const createValidationForm = (container) => {
   container.appendChild(validationFormContainter);
 };
 
+const fetchImage = (imageQuery) => {
+  const APIPractice = document.querySelector('.APIPractice');
+  const APIErrorContainer = document.querySelector('.APIErrorContainer');
+
+  fetch(`https://api.giphy.com/v1/gifs/translate?api_key=l4VEUj5CAQUULpfjesJcMJa52qVSUVZ5&s=${imageQuery}`, { mode: 'cors' })
+    .then((response) => response.json())
+    .then((response) => {
+      APIPractice.src = response.data.images.original.url;
+    })
+    .catch((err) => {
+      console.log(err);
+      APIErrorContainer.innerText = 'No images found';
+    });
+};
+
+const APIImageSearch = () => {
+  // grab dom elements
+  const APISearchInput = document.querySelector('.APISearchInput');
+  const APIErrorContainer = document.querySelector('.APIErrorContainer');
+  // reset error
+  APIErrorContainer.innerText = '';
+  // check for search term
+  if (APISearchInput.value === '') {
+    APIErrorContainer.innerText = 'What would you like to search for?';
+  } else {
+    console.log(APISearchInput.value);
+    fetchImage(APISearchInput.value);
+  }
+};
+
 const createAPIPractice = (container) => {
   // creat API practice container
   const APIPracticeContainter = document.createElement('div');
@@ -333,29 +364,28 @@ const createAPIPractice = (container) => {
   const APIPractice = document.createElement('img');
   APIPractice.classList.add('APIPractice');
 
-  // fetch img
-  fetch('https://api.giphy.com/v1/gifs/translate?api_key=l4VEUj5CAQUULpfjesJcMJa52qVSUVZ5&s=dogs%20playing', { mode: 'cors' })
-    .then((response) => response.json())
-    .then((response) => {
-      APIPractice.src = response.data.images.original.url;
-    })
-    .catch((err) => console.log(err));
-
   // search input
   const APISearchInput = document.createElement('input');
+  APISearchInput.classList.add('APISearchInput');
   APISearchInput.placeholder = 'dogs playing';
 
   // search button
   const APISearchBtn = document.createElement('div');
   APISearchBtn.classList.add('APISearchBtn');
   APISearchBtn.innerText = 'Search';
+  APISearchBtn.addEventListener('click', APIImageSearch);
+
+  // error container
+  const APIErrorContainer = document.createElement('div');
+  APIErrorContainer.classList.add('APIErrorContainer');
 
   // Append
   APIPracticeContainter.appendChild(APITitle);
-  APIPracticeContainter.appendChild(APIImageContainer);
   APIImageContainer.appendChild(APIPractice);
   APIImageContainer.appendChild(APISearchInput);
   APIImageContainer.appendChild(APISearchBtn);
+  APIImageContainer.appendChild(APIErrorContainer);
+  APIPracticeContainter.appendChild(APIImageContainer);
   container.appendChild(APIPracticeContainter);
 };
 
@@ -371,6 +401,7 @@ const createContentContainer = () => {
 
   body.appendChild(contentContainter);
   loopImageScroller();
+  fetchImage('dogs%20playing');
 };
 
 const createFooter = () => {
