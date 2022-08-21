@@ -30,8 +30,6 @@ const processMenuSelection = (e) => {
       contentContainer.children[i].classList.add('hidden');
     }
     // display selected content
-    console.log(contentContainer.children[i].id);
-    console.log(e.target.id);
     if (contentContainer.children[i].id === e.target.id) {
       contentContainer.children[i].classList.remove('hidden');
     }
@@ -318,19 +316,28 @@ const createValidationForm = (container) => {
 };
 
 const createAPIPractice = (container) => {
+  // creat API image container
   const APIPracticeContainter = document.createElement('div');
-  APIPracticeContainter.classList.add('content', 'hidden');
+  APIPracticeContainter.classList.add('APIPracticeContainter', 'content', 'hidden');
   APIPracticeContainter.id = 'APIPractice';
 
-  // create API button
-  const APIPractice = document.createElement('div');
+  // create API title
+  const APITitle = document.createElement('h3');
+  APITitle.innerText = 'Dogs playing';
+
+  // create API img
+  const APIPractice = document.createElement('img');
   APIPractice.classList.add('APIPractice');
-  APIPractice.innerText = 'dropdown';
-  APIPractice.addEventListener('click', () => {
-    APIPractice.classList.toggle('selected');
-  });
+
+  // fetch img
+  fetch('https://api.giphy.com/v1/gifs/translate?api_key=l4VEUj5CAQUULpfjesJcMJa52qVSUVZ5&s=dogs%20playing', { mode: 'cors' })
+    .then((response) => response.json())
+    .then((response) => {
+      APIPractice.src = response.data.images.original.url;
+    });
 
   // Append
+  APIPracticeContainter.appendChild(APITitle);
   APIPracticeContainter.appendChild(APIPractice);
   container.appendChild(APIPracticeContainter);
 };

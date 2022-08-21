@@ -385,6 +385,25 @@ header>h1 {
 
 
 
+/* API styling */
+
+.APIPracticeContainter {
+    color: var(--light-color);
+    text-align: center;
+    /* width: 100%; */
+}
+
+.APIPracticeContainter>h3 {
+    font-size: 1.15em;
+    margin-bottom: 1em;
+    font-weight: 500;
+}
+
+
+
+
+
+
 /* Footer styling */
 
 footer {
